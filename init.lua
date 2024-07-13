@@ -85,8 +85,8 @@ P.S. You can delete this when you're done too. It's your config now! :)
 --]]
 
 package.path = package.path .. ';' .. vim.fn.stdpath 'config' .. '/lua/custom/filetype_specific/?.lua'
-package.path = package.path .. ';' .. vim.fn.stdpath 'config' .. '/lua/custom/tools/?.lua'
 require 'maxima'
+-- package.path = package.path .. ';' .. vim.fn.stdpath 'config' .. '/lua/custom/tools/?.lua'
 
 -- Set <space> as the leader key
 -- See `:help mapleader`
@@ -432,10 +432,10 @@ require('lazy').setup({
     config = function()
       -- This is for getting a custom dictionary to work with ltex
       -- local path = vim.fn.getcwd() .. '/options/dictionary.txt'
-      -- megacoolwords = {}
+      -- custom_dictionary_words = {}
       --
       -- for word in io.open(path, 'r'):lines() do
-      --   table.insert(megacoolwords, word)
+      --   table.insert(custom_dictionary_words, word)
       -- end
       -- ===========================================================
 
@@ -600,8 +600,8 @@ require('lazy').setup({
         -- ltex = {
         --   -- settings = {
         --   --   ltex = {
-        --   --     -- megacoolwords contains a custom dictionary sourced above...
-        --   --     -- dictionary = { ['en-GB'] = megacoolwords },
+        --   --     -- custom_dictionary_words contains a custom dictionary sourced above...
+        --   --     -- dictionary = { ['en-GB'] = custom_dictionary_words },
         --   --   },
         --   -- },
         -- },
@@ -613,6 +613,7 @@ require('lazy').setup({
             },
           },
         },
+
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
@@ -620,7 +621,10 @@ require('lazy').setup({
           settings = {
             Lua = {
               completion = {
-                callSnippet = 'Replace',
+                -- Added a typo here to test if I could pass any configs to any LSPs
+                -- Not working
+                callSnippet = 'Replacez',
+                postfix = 'random_typo',
               },
               -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
               -- diagnostics = { disable = { 'missing-fields' } },
@@ -652,7 +656,7 @@ require('lazy').setup({
             -- This handles overriding only values explicitly passed
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for tsserver)
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+            -- server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
             require('lspconfig')[server_name].setup(server)
           end,
 
