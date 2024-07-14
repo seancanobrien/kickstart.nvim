@@ -431,12 +431,13 @@ require('lazy').setup({
     },
     config = function()
       -- This is for getting a custom dictionary to work with ltex
-      -- local path = vim.fn.getcwd() .. '/options/dictionary.txt'
-      -- custom_dictionary_words = {}
-      --
-      -- for word in io.open(path, 'r'):lines() do
-      --   table.insert(custom_dictionary_words, word)
-      -- end
+      local path = vim.fn.getcwd() .. '/options/dictionary.txt'
+
+      custom_dictionary_words = {}
+
+      for word in io.open(path, 'r'):lines() do
+        table.insert(custom_dictionary_words, word)
+      end
       -- ===========================================================
 
       -- To show a floating window?
@@ -596,7 +597,16 @@ require('lazy').setup({
         --
 
         -- Tex :)
-        texlab = {},
+        texlab = {
+          settings = {
+            texlab = {
+              build = {
+                -- maybe get rid of this
+                useFileList = true,
+              },
+            },
+          },
+        },
         -- ltex = {
         --   -- settings = {
         --   --   ltex = {
@@ -606,10 +616,12 @@ require('lazy').setup({
         --   -- },
         -- },
         ltex = {
-          language = 'en-GB',
           settings = {
             ltex = {
               language = 'en-GB', -- Override the ltex.language setting
+              dictionary = {
+                ['en-GB'] = custom_dictionary_words,
+              },
             },
           },
         },
@@ -651,6 +663,10 @@ require('lazy').setup({
 
       require('mason-lspconfig').setup {
         handlers = {
+          -- ['ltex'] = function()
+          --   dofile '/home/sean/.config/nvim/lua/custom/tools/load_ltex.lua'
+          -- end,
+
           function(server_name)
             local server = servers[server_name] or {}
             -- This handles overriding only values explicitly passed
@@ -659,10 +675,6 @@ require('lazy').setup({
             -- server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
             require('lspconfig')[server_name].setup(server)
           end,
-
-          -- ['ltex'] = function()
-          --   dofile '/home/sean/.config/nvim/lua/custom/tools/load_ltex.lua'
-          -- end,
         },
       }
       -- require('lspconfig').lua_ls.setup {
