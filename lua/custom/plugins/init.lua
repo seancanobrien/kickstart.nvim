@@ -17,17 +17,27 @@ return {
     end,
   },
 
-  -- Undo tree
+  -- a different undo tree
   {
-    'jiaoshijie/undotree',
-    dependencies = 'nvim-lua/plenary.nvim',
+    'mbbill/undotree',
     config = function()
-      require('undotree').setup()
+      vim.g.undotree_WindowLayout = 2
+      vim.api.nvim_set_keymap('n', '<leader>uu', ':UndotreeToggle<CR>', { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', '<leader>uf', ':UndotreeFocus<CR>', { noremap = true, silent = true })
     end,
-    keys = { -- load the plugin only when using it's keybinding:
-      { '<leader>u', "<cmd>lua require('undotree').toggle()<cr>" },
-    },
   },
+
+  -- Undo tree
+  -- {
+  --   'jiaoshijie/undotree',
+  --   dependencies = 'nvim-lua/plenary.nvim',
+  --   config = function()
+  --     require('undotree').setup()
+  --   end,
+  --   keys = { -- load the plugin only when using it's keybinding:
+  --     { '<leader>u', "<cmd>lua require('undotree').toggle()<cr>" },
+  --   },
+  -- },
 
   -- different ltex plugin
   { 'barreiroleo/ltex-extra.nvim' },
