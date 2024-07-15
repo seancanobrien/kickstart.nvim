@@ -16,6 +16,8 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- Function to run custom script with current buffer and current working directory as arguments
 local function maxima_debug()
+  -- write the buffer first
+  vim.api.nvim_command 'w'
   -- Get the name of the current buffer (full file path)
   local bufname = vim.api.nvim_buf_get_name(0)
   -- Get the current working directory
