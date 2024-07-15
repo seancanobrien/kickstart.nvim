@@ -25,10 +25,22 @@ return {
       require('undotree').setup()
     end,
     keys = { -- load the plugin only when using it's keybinding:
-      { '<leader>uu', "<cmd>lua require('undotree').toggle()<cr>" },
+      { '<leader>u', "<cmd>lua require('undotree').toggle()<cr>" },
     },
   },
 
+  -- different ltex plugin
+  { 'barreiroleo/ltex-extra.nvim' },
+
+  -- improved suuport for ltex in neovim
+  -- {
+  --   'icewind/ltex-client.nvim',
+  --   config = function()
+  --     require('ltex-client').setup {
+  --       user_dictionaries_path = '/home/sean/Documents/.dictionaries',
+  --     }
+  --   end,
+  -- },
   -- Better LSP diagnostics
   -- {
   --   'dgagn/diagflow.nvim',
