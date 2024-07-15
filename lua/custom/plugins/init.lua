@@ -32,15 +32,6 @@ return {
   -- different ltex plugin
   { 'barreiroleo/ltex-extra.nvim' },
 
-  -- improved suuport for ltex in neovim
-  -- {
-  --   'icewind/ltex-client.nvim',
-  --   config = function()
-  --     require('ltex-client').setup {
-  --       user_dictionaries_path = '/home/sean/Documents/.dictionaries',
-  --     }
-  --   end,
-  -- },
   -- Better LSP diagnostics
   -- {
   --   'dgagn/diagflow.nvim',
@@ -126,8 +117,8 @@ return {
         -- - allow_remote_control socket-only
         -- - listen_on unix:/tmp/kitty
         kitty = {
-          enabled = true,
-          font = '+0', -- font size increment
+          enabled = false,
+          -- font = '+0', -- font size increment
         },
       },
     },

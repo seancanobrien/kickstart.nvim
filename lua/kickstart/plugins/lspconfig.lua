@@ -112,6 +112,13 @@ return {
             end, '[T]oggle Inlay [H]ints')
           end
 
+          -- start with inlays off
+          vim.lsp.inlay_hint.enable(false)
+          -- This diables "virtual text". This might remove any inlat hints, toggled by above^^
+          vim.diagnostic.config {
+            virtual_text = false,
+          }
+
           -- specific part relevant only to ltex. see:
           -- https://github.com/barreiroleo/ltex_extra.nvim?tab=readme-ov-file#installation
           if client and client.name and client.name == 'ltex' then
