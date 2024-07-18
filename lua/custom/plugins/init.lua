@@ -17,7 +17,10 @@ return {
     end,
   },
 
-  -- a different undo tree
+  -- Adds custom dictionary and ignore functionality to ltex
+  { 'barreiroleo/ltex-extra.nvim' },
+
+  -- Undotree
   {
     'mbbill/undotree',
     config = function()
@@ -26,28 +29,6 @@ return {
       vim.api.nvim_set_keymap('n', '<leader>uf', ':UndotreeFocus<CR>', { noremap = true, silent = true })
     end,
   },
-
-  -- Undo tree
-  -- {
-  --   'jiaoshijie/undotree',
-  --   dependencies = 'nvim-lua/plenary.nvim',
-  --   config = function()
-  --     require('undotree').setup()
-  --   end,
-  --   keys = { -- load the plugin only when using it's keybinding:
-  --     { '<leader>u', "<cmd>lua require('undotree').toggle()<cr>" },
-  --   },
-  -- },
-
-  -- different ltex plugin
-  { 'barreiroleo/ltex-extra.nvim' },
-
-  -- Better LSP diagnostics
-  -- {
-  --   'dgagn/diagflow.nvim',
-  --   -- event = 'LspAttach', This is what I use personnally and it works great
-  --   opts = {},
-  -- },
 
   -- Search undo tree using telescope
   {
@@ -83,6 +64,9 @@ return {
     end,
   },
 
+  -- Little lines wherever indenting is happening
+  { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} },
+
   -- Zen mode
   {
     'folke/zen-mode.nvim',
@@ -97,15 +81,6 @@ return {
         height = 0.95, -- height of the Zen window
         -- by default, no options are changed for the Zen window
         -- uncomment any of the options below, or add other vim.wo options you want to apply
-        options = {
-          -- signcolumn = "no", -- disable signcolumn
-          -- number = false, -- disable number column
-          -- relativenumber = false, -- disable relative numbers
-          -- cursorline = false, -- disable cursorline
-          -- cursorcolumn = false, -- disable cursor column
-          -- foldcolumn = "0", -- disable fold column
-          -- list = false, -- disable whitespace characters
-        },
       },
       plugins = {
         -- disable some global vim options (vim.o...)
