@@ -165,6 +165,8 @@ return {
         -- tsserver = {},
         --
 
+        tsserver = {},
+
         ltex = {
           settings = {
             ltex = {

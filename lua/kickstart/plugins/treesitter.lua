@@ -3,7 +3,7 @@ return {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'commonlisp' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -15,6 +15,17 @@ return {
         --  the list of additional_vim_regex_highlighting and disabled languages for indent.
         additional_vim_regex_highlighting = { 'ruby' },
       },
+
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = '<CR>',
+          scope_incremental = '<CR>',
+          node_incremental = '<TAB>',
+          node_decremental = '<S-TAB>',
+        },
+      },
+
       indent = { enable = true, disable = { 'ruby' } },
     },
     config = function(_, opts)
@@ -34,7 +45,7 @@ return {
           -- optional entries:
           branch = 'main', -- default branch in case of git repo if different from master
           generate_requires_npm = true, -- if stand-alone parser without npm dependencies
-          requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
+          requires_generate_from_grammar = true, -- if folder contains pre-generated src/parser.c
         },
         filetype = 'maxima', -- if filetype does not match the parser name
       }
