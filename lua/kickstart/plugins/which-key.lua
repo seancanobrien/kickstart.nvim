@@ -23,7 +23,7 @@ return {
       -- Document existing key chains
       require('which-key').add {
         { '<leader>c', desc = '[C]ode' },
-        { '<leader>d', desc = '[D]ocument' },
+        { '<leader>~', desc = '[~]ymbols' },
         { '<leader>r', desc = '[R]ename' },
         { '<leader>s', desc = '[S]earch' },
         { '<leader>w', desc = '[W]orkspace' },
