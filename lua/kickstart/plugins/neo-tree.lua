@@ -11,7 +11,7 @@ return {
   },
   cmd = 'Neotree',
   keys = {
-    { '<C-b>', ':Neotree toggle<CR>', { desc = 'NeoTree reveal' } },
+    { '<C-b>', '<CMD>Neotree toggle<CR>', { desc = 'NeoTree reveal', silent = true } },
   },
 
   opts = {
