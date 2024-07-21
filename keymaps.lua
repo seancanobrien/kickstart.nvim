@@ -1,6 +1,11 @@
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
+-- Paste/delete without changing buffer
+vim.keymap.set('v', '<Leader>p', '"_dP', { desc = '[P]aste and keep register', noremap = true, silent = true })
+vim.keymap.set('n', '<Leader>d', '"_d', { desc = '[D]elete to black hole', noremap = true, silent = true })
+vim.keymap.set('v', '<Leader>d', '"_d', { desc = '[D]elete to black hole', noremap = true, silent = true })
+
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
