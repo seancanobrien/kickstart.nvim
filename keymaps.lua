@@ -1,6 +1,10 @@
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
+-- To speed up tree-sitter updating and tree inspection
+vim.keymap.set('n', '<leader>rtu', '<CMD>TSUpdate<CR>', { desc = 'Tree-Sitter Update' })
+vim.keymap.set('n', '<leader>rti', '<CMD>InspectTree<CR>', { desc = 'Tree-Sitter Inspect Tree' })
+
 -- Paste/delete without changing buffer
 vim.keymap.set('v', '<Leader>p', '"_dP', { desc = '[P]aste and keep register', noremap = true, silent = true })
 vim.keymap.set('n', '<Leader>d', '"_d', { desc = '[D]elete to black hole', noremap = true, silent = true })
