@@ -43,6 +43,9 @@ return {
     end,
   },
 
+  -- Multi cursors
+  { 'mg979/vim-visual-multi' },
+
   -- Search undo tree using telescope
   {
     'debugloop/telescope-undo.nvim',
