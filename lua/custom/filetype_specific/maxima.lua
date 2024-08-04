@@ -8,7 +8,8 @@ vim.filetype.add {
 
 -- For a specific file type, e.g., JavaScript
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'maxima',
+  -- This is for highlighting, i am turning off for now to test treesitter highlighting
+  -- pattern = 'maxima',
   callback = function()
     vim.bo.commentstring = '/* %s */'
 
@@ -28,10 +29,12 @@ vim.api.nvim_create_autocmd('FileType', {
       vim.fn.jobstart(command, { detatch = true })
     end
 
+    -- vim.treesitter.query.set('maxima', 'highlights', '/home/sean/Documents/tree-sitter-maxima/queries/highlights.scm')
+
     -- Create a custom command to trigger the function
-    vim.api.nvim_create_user_command('RunScript', maxima_debug, {})
+    vim.api.nvim_create_user_command('MaximaDebug', maxima_debug, {})
 
     -- Optional: Bind the command to a key mapping for easier access
-    vim.keymap.set('n', '<leader>5', ':RunScript<CR>', { noremap = true, silent = true })
+    vim.keymap.set('n', '<leader>5', ':MaximaDebug<CR>', { noremap = true, silent = true })
   end,
 })
