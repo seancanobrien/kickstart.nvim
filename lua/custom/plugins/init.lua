@@ -30,6 +30,18 @@ return {
     end,
   },
 
+  --floating terminal
+  {
+    'voldikss/vim-floaterm',
+    config = function()
+      -- vim.api.nvim_set_keymap('n', '<leader>bb', '<cmd>FloatermToggle --width=0.9 --height=0.9<CR>', { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', '<leader>bb', '<cmd>FloatermNew --width=0.9 --height=0.9<CR>', { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', '<leader>bk', '<cmd>FloatermKill<CR>', { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', '<leader>bn', '<cmd>FloatermNext<CR>', { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', '<leader>bp', '<cmd>FloatermPrev<CR>', { noremap = true, silent = true })
+    end,
+  },
+
   -- Adds custom dictionary and ignore functionality to ltex
   { 'barreiroleo/ltex-extra.nvim' },
 
@@ -40,6 +52,41 @@ return {
       vim.g.undotree_WindowLayout = 2
       vim.api.nvim_set_keymap('n', '<leader>uu', ':UndotreeToggle<CR>', { noremap = true, silent = true })
       vim.api.nvim_set_keymap('n', '<leader>uf', ':UndotreeFocus<CR>', { noremap = true, silent = true })
+    end,
+  },
+
+  -- Git diffs
+  { 'sindrets/diffview.nvim' },
+
+  --Rainbow delimiters
+  {
+    'HiPhish/rainbow-delimiters.nvim',
+    config = function()
+      local rainbow_delimiters = require 'rainbow-delimiters'
+
+      vim.g.rainbow_delimiters = {
+        strategy = {
+          [''] = rainbow_delimiters.strategy['global'],
+          vim = rainbow_delimiters.strategy['local'],
+        },
+        query = {
+          [''] = 'rainbow-delimiters',
+          lua = 'rainbow-blocks',
+        },
+        priority = {
+          [''] = 110,
+          lua = 210,
+        },
+        highlight = {
+          'RainbowDelimiterRed',
+          'RainbowDelimiterYellow',
+          'RainbowDelimiterBlue',
+          'RainbowDelimiterOrange',
+          'RainbowDelimiterGreen',
+          'RainbowDelimiterViolet',
+          'RainbowDelimiterCyan',
+        },
+      }
     end,
   },
 
