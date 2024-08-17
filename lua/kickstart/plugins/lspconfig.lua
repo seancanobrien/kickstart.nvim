@@ -118,20 +118,6 @@ return {
           vim.diagnostic.config {
             virtual_text = false,
           }
-
-          -- specific part relevant only to ltex. see:
-          -- https://github.com/barreiroleo/ltex_extra.nvim?tab=readme-ov-file#installation
-          if client and client.name and client.name == 'ltex' then
-            require('ltex_extra').setup {
-              load_langs = { 'en-GB' }, -- en-US as default
-              -- boolean : whether to load dictionaries on startup
-              init_check = true,
-              -- string : relative or absolute path to store dictionaries
-              -- e.g. subfolder in the project root or the current working directory: ".ltex"
-              -- e.g. shared files for all projects:  vim.fn.expand("~") .. "/.local/share/ltex"
-              path = '.dictionaries', -- project root or current working directory
-            }
-          end
         end,
       })
 
@@ -168,6 +154,19 @@ return {
         tsserver = {},
 
         ltex = {
+          on_attach = function(client, bufnr)
+            -- see https://github.com/barreiroleo/ltex_extra.nvim?tab=readme-ov-file#installation
+            require('ltex_extra').setup {
+              load_langs = { 'en-GB' }, -- en-US as default
+              -- boolean : whether to load dictionaries on startup
+              init_check = true,
+              -- string : relative or absolute path to store dictionaries
+              -- e.g. subfolder in the project root or the current working directory: ".ltex"
+              -- e.g. shared files for all projects:  vim.fn.expand("~") .. "/.local/share/ltex"
+              path = '.dictionaries', -- project root or current working directory
+            }
+          end,
+
           settings = {
             ltex = {
               language = 'en-GB', -- Override the ltex.language setting
