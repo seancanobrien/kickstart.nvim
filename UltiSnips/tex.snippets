@@ -507,8 +507,13 @@ snippet ~~ "~" iA
 endsnippet
 
 context "math()"
-snippet set "set" wA
-\\{$1\\} $0
+snippet seg "set given" wA
+\\Set\\{$1 \\given $2} $0
+endsnippet
+
+context "math()"
+snippet set "set wtihout given" wA
+\\Set\\{$1\\} $0
 endsnippet
 
 snippet || "mid" iA
@@ -534,18 +539,24 @@ snippet NN "n" iA
 \N
 endsnippet
 
-snippet Nn "cap" iA
+# Set "and"
+context "math()"
+snippet sa "cap" iA
 \cap 
 endsnippet
 
-snippet UU "cup" iA
+# Set "or"
+context "math()"
+snippet so "cup" iA
 \cup 
 endsnippet
 
+context "math()"
 snippet uuu "bigcup" iA
 \bigcup_{${1:i \in ${2: I}}} $0
 endsnippet
 
+context "math()"
 snippet nnn "bigcap" iA
 \bigcap_{${1:i \in ${2: I}}} $0
 endsnippet
