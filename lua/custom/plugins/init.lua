@@ -139,6 +139,10 @@ return {
   -- Handy shortcuts
   { 'tpope/vim-unimpaired' },
 
+  -- Plugin for GhostText.
+  -- For writing text in to a browser using vim <3
+  { 'subnut/nvim-ghost.nvim' },
+
   -- File navigation
   {
     'ThePrimeagen/harpoon',
