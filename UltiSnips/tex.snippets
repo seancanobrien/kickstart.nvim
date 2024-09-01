@@ -132,7 +132,7 @@ endsnippet
 
 
 context "math()"
-snippet // "Fraction" iA
+snippet \/ "Fraction" iA
 \\frac{$1}{$2}$0
 endsnippet
 
@@ -141,13 +141,13 @@ snippet / "Fraction" i
 endsnippet
 
 context "math()"
-snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "symbol frac" wrA
+snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)\/' "symbol frac" wrA
 \\frac{`!p snip.rv = match.group(1)`}{$1}$0
 endsnippet
 
 priority 1000
 context "math()"
-snippet '^.*\)/' "() frac" wrA
+snippet '^.*\)\/' "() frac" wrA
 `!p
 stripped = match.string[:-1]
 depth = 0
