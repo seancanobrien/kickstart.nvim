@@ -1,1 +1,2 @@
 require 'maxima'
+require 'latex'
