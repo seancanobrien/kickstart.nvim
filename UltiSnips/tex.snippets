@@ -506,6 +506,9 @@ snippet << "<<" iA
 \ll
 endsnippet
 
+snippet .~ "~" iA
+\dsim 
+endsnippet
 
 snippet ~~ "~" iA
 \sim 
@@ -513,12 +516,12 @@ endsnippet
 
 context "math()"
 snippet seg "set given" wA
-\\Set\\{$1 \\given $2} $0
+\\Set\{$1 \\given $2} $0
 endsnippet
 
 context "math()"
 snippet set "set wtihout given" wA
-\\Set\\{$1\\} $0
+\\Set\{$1\} $0
 endsnippet
 
 snippet || "mid" iA
