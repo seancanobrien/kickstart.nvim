@@ -5,6 +5,9 @@
 vim.keymap.set('n', '<leader>rtu', '<CMD>TSUpdate<CR>', { desc = 'Tree-Sitter Update' })
 vim.keymap.set('n', '<leader>rti', '<CMD>InspectTree<CR>', { desc = 'Tree-Sitter Inspect Tree' })
 
+-- Replace all ". " (period whitespace) with ".\n" (period newline). Useful in tex.
+vim.keymap.set('n', '<leader>rn', [[:%s/\. /\.\r/g<CR>]], { noremap = true, silent = true, desc = "Replace '. ' with '.\\n'" })
+
 -- Paste/delete without changing buffer
 vim.keymap.set('v', '<Leader>p', '"_dP', { desc = '[P]aste and keep register', noremap = true, silent = true })
 vim.keymap.set('n', '<Leader>d', '"_d', { desc = '[D]elete to black hole', noremap = true, silent = true })
