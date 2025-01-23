@@ -37,6 +37,7 @@ require('lazy').setup({
   require 'custom/plugins/ultisnips',
   require 'custom/plugins/undotree',
   require 'custom/plugins/vim-floaterm',
+  require 'custom/plugins/vim-mma',
   require 'custom/plugins/vim-sleuth',
   require 'custom/plugins/vimtex',
   require 'custom/plugins/vim-unimpaired',

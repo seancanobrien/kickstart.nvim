@@ -151,7 +151,7 @@ return {
         -- tsserver = {},
         --
 
-        tsserver = {},
+        -- tsserver = {},
 
         ltex = {
           on_attach = function(client, bufnr)
