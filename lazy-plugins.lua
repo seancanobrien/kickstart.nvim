@@ -31,7 +31,7 @@ require('lazy').setup({
   require 'custom/plugins/harpoon',
   require 'custom/plugins/indent-blankline',
   require 'custom/plugins/ltex-extra',
-  require 'custom/plugins/nvim-ghost',
+  -- require 'custom/plugins/nvim-ghost',
   require 'custom/plugins/rainbow-delimiters',
   require 'custom/plugins/telescope-undo',
   require 'custom/plugins/ultisnips',
