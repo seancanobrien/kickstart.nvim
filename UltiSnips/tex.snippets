@@ -506,8 +506,16 @@ snippet << "<<" iA
 \ll
 endsnippet
 
-snippet .~ "~" iA
-\dsim 
+# snippet .~ "~" iA
+# \dsim 
+# endsnippet
+
+snippet ie. "i.e." iA
+i.e.~
+endsnippet
+
+snippet eg. "e.g." iA
+e.g.~
 endsnippet
 
 snippet ~~ "~" iA
@@ -557,6 +565,12 @@ endsnippet
 context "math()"
 snippet so "cup" iA
 \cup 
+endsnippet
+
+# Set "disjoint or"
+context "math()"
+snippet sdo "cup" iA
+\sqcup 
 endsnippet
 
 context "math()"
