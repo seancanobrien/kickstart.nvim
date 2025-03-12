@@ -33,6 +33,8 @@ require('lazy').setup({
   require 'custom/plugins/ltex-extra',
   -- require 'custom/plugins/nvim-ghost',
   require 'custom/plugins/rainbow-delimiters',
+  require 'custom/plugins/trouble',
+  require 'custom/plugins/spectre',
   require 'custom/plugins/telescope-undo',
   require 'custom/plugins/ultisnips',
   require 'custom/plugins/undotree',
