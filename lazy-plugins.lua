@@ -26,8 +26,8 @@ require('lazy').setup({
 
   -- Custom plugins
   require 'custom/plugins/auto-session',
-  require 'custom/plugins/copilot',
-  require 'custom/plugins/copilot_chat',
+  -- require 'custom/plugins/copilot',
+  -- require 'custom/plugins/copilot_chat',
   require 'custom/plugins/Comment',
   require 'custom/plugins/diffview',
   require 'custom/plugins/harpoon',
