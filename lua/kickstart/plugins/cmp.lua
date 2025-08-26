@@ -33,9 +33,24 @@ return {
             cmp.abort()
             fallback()
           end,
-          ['<Tab>'] = function(fallback)
-            return require('lazyvim.cmp').map({ 'snippet_forward', 'ai_accept' }, fallback)()
-          end,
+          -- ['<Tab>'] = function(fallback)
+          --   if cmp.visible() then
+          --     cmp.select_next_item()
+          --   elseif vim.snippet and vim.snippet.active { direction = 1 } then
+          --     vim.snippet.jump(1)
+          --   else
+          --     fallback()
+          --   end
+          -- end,
+          -- ['<S-Tab>'] = function(fallback)
+          --   if cmp.visible() then
+          --     cmp.select_prev_item()
+          --   elseif vim.snippet and vim.snippet.active { direction = -1 } then
+          --     vim.snippet.jump(-1)
+          --   else
+          --     fallback()
+          --   end
+          -- end,
         },
         sources = cmp.config.sources({
           { name = 'lazydev' },
