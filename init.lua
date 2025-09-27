@@ -7,6 +7,7 @@ vim.g.have_nerd_font = true
 package.path = package.path .. ';' .. vim.fn.stdpath 'config' .. '/?.lua'
 package.path = package.path .. ';' .. vim.fn.stdpath 'config' .. '/lua/custom/tools/?.lua'
 package.path = package.path .. ';' .. vim.fn.stdpath 'config' .. '/lua/custom/filetype_specific/?.lua'
+package.path = package.path .. ';' .. vim.fn.stdpath 'config' .. '/lua/custom/general/?.lua'
 
 -- [[ Custom Scripts etc ]]
 require 'custom-tools'
