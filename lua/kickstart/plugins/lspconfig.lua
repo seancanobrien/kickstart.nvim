@@ -135,49 +135,44 @@ return {
             end
           end)
         end,
-        -- on_attach = function(client, bufnr)
-        --   -- Call the global on_attach first
-        --   vim.lsp.config['*'].on_attach(client, bufnr)
-        --
-        --   -- Then add ltex-specific setup
-        --   require('ltex_extra').setup {
-        --     load_langs = { 'en-GB' },
-        --     init_check = true,
-        --     path = '.dictionaries',
-        --   }
-        -- end,
       })
-
       vim.lsp.enable 'ltex'
+
+      -- TexLab (LaTeX language server + formatting)
+      vim.lsp.config('texlab', {
+        cmd = { 'texlab' },
+        filetypes = { 'tex', 'latex' },
+        root_markers = { '.git', 'texlabroot', 'main.tex' },
+
+        settings = {
+          texlab = {
+            build = {
+              onSave = false,
+            },
+
+            -- THIS is the important part
+            latexFormatter = 'latexindent',
+            latexindent = {
+              modifyLineBreaks = true,
+              -- This seems like the only way to load more specific settings.
+              -- Forces settings to be global.
+              ['local'] = '/home/sean/.config/nvim/latexindent/indentSettings.yaml',
+            },
+          },
+        },
+
+        on_attach = function(client, bufnr)
+          -- Call your global on_attach
+          local global_on_attach = vim.lsp.config['*'] and vim.lsp.config['*'].on_attach
+          if global_on_attach then
+            global_on_attach(client, bufnr)
+          end
+        end,
+      })
+      vim.lsp.enable 'texlab'
 
       -- Setup Mason for automatic installation
       require('mason').setup()
-      --
-      -- local ensure_installed = {
-      --   'lua-language-server',
-      --   'ltex-ls',
-      --   'stylua', -- Lua formatter
-      -- }
-      --
-      -- require('mason-tool-installer').setup {
-      --   ensure_installed = ensure_installed,
-      -- }
-
-      -- Optional: You can still use mason-lspconfig for automatic setup of servers
-      -- that you don't want to configure manually with vim.lsp.config()
-      -- require('mason-lspconfig').setup {
-      --   handlers = {
-      --     function(server_name)
-      --       -- Only setup servers that aren't already configured with vim.lsp.config()
-      --       local configured_servers = { 'lua_ls', 'ltex' }
-      --       if not vim.tbl_contains(configured_servers, server_name) then
-      --         require('lspconfig')[server_name].setup {
-      --           capabilities = capabilities,
-      --         }
-      --       end
-      --     end,
-      --   },
-      -- }
     end,
   },
 }
