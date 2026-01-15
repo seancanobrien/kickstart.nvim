@@ -32,6 +32,7 @@ require('lazy').setup({
   require 'custom/plugins/diffview',
   require 'custom/plugins/harpoon',
   require 'custom/plugins/indent-blankline',
+  require 'custom/plugins/jupytext',
   require 'custom/plugins/ltex-extra',
   -- See https://github.com/LazyVim/LazyVim/issues/6039#issuecomment-2856227817
   require 'custom/plugins/mason-bug-workaround',
