@@ -19,10 +19,8 @@ return {
       -- capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
       -- Global LSP configuration using vim.lsp.config()
-      vim.lsp.config('*', {
-        -- capabilities = capabilities,
-        -- This function runs when any LSP attaches to a buffer
-        on_attach = function(client, bufnr)
+      local global_on_attach =
+        function(client, bufnr)
           -- Create a function for easy keymap creation
           local map = function(keys, func, desc)
             vim.keymap.set('n', keys, func, { buffer = bufnr, desc = 'LSP: ' .. desc })
@@ -70,36 +68,35 @@ return {
             virtual_text = false,
           }, vim.api.nvim_get_current_buf())
         end,
-      })
-
-      -- Configure specific language servers using vim.lsp.config()
-
-      -- Lua Language Server
-      vim.lsp.config('lua_ls', {
-        cmd = { 'lua-language-server' },
-        filetypes = { 'lua' },
-        root_markers = { '.luarc.json', '.luarc.jsonc', '.luacheckrc', '.stylua.toml', 'stylua.toml', 'selene.toml', 'selene.yml' },
-        settings = {
-          Lua = {
-            runtime = {
-              version = 'LuaJIT',
-            },
-            workspace = {
-              checkThirdParty = false,
-              library = {
-                vim.env.VIMRUNTIME,
-                -- Add other library paths if needed
+        -- Configure specific language servers using vim.lsp.config()
+        -- Lua Language Server
+        vim.lsp.config('lua_ls', {
+          cmd = { 'lua-language-server' },
+          filetypes = { 'lua' },
+          root_markers = { '.luarc.json', '.luarc.jsonc', '.luacheckrc', '.stylua.toml', 'stylua.toml', 'selene.toml', 'selene.yml' },
+          on_attach = global_on_attach,
+          settings = {
+            Lua = {
+              runtime = {
+                version = 'LuaJIT',
+              },
+              workspace = {
+                checkThirdParty = false,
+                library = {
+                  vim.env.VIMRUNTIME,
+                  -- Add other library paths if needed
+                },
+              },
+              completion = {
+                callSnippet = 'Replace',
+              },
+              telemetry = {
+                enable = false,
               },
             },
-            completion = {
-              callSnippet = 'Replace',
-            },
-            telemetry = {
-              enable = false,
-            },
           },
-        },
-      })
+        })
+      vim.lsp.enable 'lua_ls'
 
       -- LTeX (LaTeX/Markdown grammar checking)
       vim.lsp.config('ltex', {
@@ -119,7 +116,7 @@ return {
             end
 
             -- Call the global on_attach first
-            local global_on_attach = vim.lsp.config['*'] and vim.lsp.config['*'].on_attach
+            pcall(global_on_attach, client, bufnr)
             if global_on_attach then
               pcall(global_on_attach, client, bufnr)
             end
@@ -163,7 +160,7 @@ return {
 
         on_attach = function(client, bufnr)
           -- Call your global on_attach
-          local global_on_attach = vim.lsp.config['*'] and vim.lsp.config['*'].on_attach
+          pcall(global_on_attach, client, bufnr)
           if global_on_attach then
             global_on_attach(client, bufnr)
           end
@@ -176,5 +173,4 @@ return {
     end,
   },
 }
--- vim: ts=2 sts=2 sw=2 et
 -- vim: ts=2 sts=2 sw=2 et
