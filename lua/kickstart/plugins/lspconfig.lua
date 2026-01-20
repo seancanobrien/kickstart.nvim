@@ -58,9 +58,9 @@ return {
         end
 
         -- Disable virtual text diagnostics
-        vim.diagnostic.config({
+        vim.diagnostic.config {
           virtual_text = false,
-        }, vim.api.nvim_get_current_buf())
+        }
       end
 
       -- Lua Language Server
