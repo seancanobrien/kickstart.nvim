@@ -104,27 +104,27 @@ return {
 
         on_attach = function(client, bufnr)
           -- Delay attach until the buffer is fully initialized
-          vim.schedule(function()
-            if not vim.api.nvim_buf_is_valid(bufnr) then
-              return
-            end
+          -- vim.schedule(function()
+          --   if not vim.api.nvim_buf_is_valid(bufnr) then
+          --     return
+          --   end
 
-            -- Call the global on_attach first
+          -- Call the global on_attach first
+          if global_on_attach then
             pcall(global_on_attach, client, bufnr)
-            if global_on_attach then
-              pcall(global_on_attach, client, bufnr)
-            end
+          end
 
-            -- Then add ltex-specific setup
-            local ok, ltex_extra = pcall(require, 'ltex_extra')
-            if ok then
-              ltex_extra.setup {
-                load_langs = { 'en-GB' },
-                init_check = true,
-                path = '.dictionaries',
-              }
-            end
-          end)
+          -- Then add ltex-specific setup
+          local ok, ltex_extra = pcall(require, 'ltex_extra')
+          if ok then
+            ltex_extra.setup {
+              load_langs = { 'en-GB' },
+              init_check = true,
+              path = '.dictionaries',
+            }
+          end
+          -- end
+          -- )
         end,
       })
       vim.lsp.enable 'ltex'
