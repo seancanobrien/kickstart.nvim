@@ -35,7 +35,7 @@ require('lazy').setup({
   require 'custom/plugins/jupytext',
   require 'custom/plugins/ltex-extra',
   -- See https://github.com/LazyVim/LazyVim/issues/6039#issuecomment-2856227817
-  require 'custom/plugins/mason-bug-workaround',
+  require 'custom/plugins/mason-lspconfig',
   -- require 'custom/plugins/nvim-ghost',
   require 'custom/plugins/rainbow-delimiters',
   require 'custom/plugins/trouble',
