@@ -9,6 +9,9 @@ package.path = package.path .. ';' .. vim.fn.stdpath 'config' .. '/lua/custom/to
 package.path = package.path .. ';' .. vim.fn.stdpath 'config' .. '/lua/custom/filetype_specific/?.lua'
 package.path = package.path .. ';' .. vim.fn.stdpath 'config' .. '/lua/custom/general/?.lua'
 
+-- The venv which holds relevant python packages
+vim.g.python3_host_prog = '/Users/seanobrien/.local/python_env_for_packages/env/bin/python'
+
 -- [[ Custom Scripts etc ]]
 require 'custom-tools'
 
