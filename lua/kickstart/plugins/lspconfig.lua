@@ -147,7 +147,7 @@ return {
               modifyLineBreaks = true,
               -- This seems like the only way to load more specific settings.
               -- Forces settings to be global.
-              ['local'] = '/home/sean/.config/nvim/latexindent/indentSettings.yaml',
+              ['local'] = '/users/seanobrien/.config/nvim/latexindent/indentSettings.yaml',
             },
           },
         },
