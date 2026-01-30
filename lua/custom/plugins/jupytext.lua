@@ -1,7 +1,7 @@
 return {
   'goerz/jupytext.nvim',
   opts = {
-    jupytext = '/home/sean/.local/python_env_for_packages/env/bin/jupytext',
+    jupytext = '/Users/seanobrien/.local/python_env_for_packages/env/bin/jupytext',
     format = 'markdown',
     update = true,
     sync_patterns = { '*.md', '*.py', '*.jl', '*.R', '*.Rmd', '*.qmd' },
