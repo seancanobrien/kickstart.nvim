@@ -26,10 +26,12 @@ require('lazy').setup({
 
   -- Custom plugins
   require 'custom/plugins/auto-session',
+  require 'custom/plugins/bqf',
   -- require 'custom/plugins/copilot',
   -- require 'custom/plugins/copilot_chat',
   require 'custom/plugins/Comment',
   require 'custom/plugins/diffview',
+  require 'custom/plugins/fzf',
   require 'custom/plugins/harpoon',
   require 'custom/plugins/indent-blankline',
   require 'custom/plugins/jupytext',
