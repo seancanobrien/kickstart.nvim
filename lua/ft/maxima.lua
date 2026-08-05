@@ -8,8 +8,7 @@ vim.filetype.add {
 
 -- For a specific file type, e.g., JavaScript
 vim.api.nvim_create_autocmd('FileType', {
-  -- This is for highlighting, i am turning off for now to test treesitter highlighting
-  -- pattern = 'maxima',
+  pattern = 'maxima',
   callback = function()
     vim.bo.commentstring = '/* %s */'
 
